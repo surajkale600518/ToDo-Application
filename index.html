@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <style>
+    
+    </style>
+  </head>
+  <body>
+    
+    <div class="container-fluid justify-content-center" style="background-color: #ff7675; font-style: italic;">
+      <h1 style="text-align: center; font-style: italic;">To Do List</h1>
+      <dl class="row">
+        <dt class="col-2">Sr.No</dt>
+        <dd class="col-sm-9">
+          <input type="number" id="Sr.No" class="form-control border-1" />
+        </dd>
+        <dt class="col-sm-2">First Name</dt>
+        <dd class="col-sm-9">
+          <input type="text" id="FName" class="form-control border-1" />
+        </dd>
+        <dt class="col-sm-2">Last Name</dt>
+        <dd class="col-sm-9">
+          <input type="text" id="LName" class="form-control border-1" />
+        </dd>
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-9">
+          <input type="text" id="Email" class="form-control border-1" />
+        </dd>
+        <dt class="col-sm-2">Number</dt>
+        <dd class="col-sm-9">
+          <input type="text" id="Mobile" class="form-control border-1" />
+        </dd>
+        <div id="add" style="text-align: center;">
+          <dd class="col-sm-12">
+            <button onclick="insertData()" class="btn btn-success">
+              Add New Data
+            </button>
+          </dd>
+        </div>
+      </dl>
+      <table class="table table-bordered table-striped mt-5 bg-info-subtle">
+        <thead class="thead-dark" style="background: #ff7675;">
+          <tr>
+            <th>Sr.No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>User Email ID</th>
+            <th>User Number</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      function insertData() {
+        var SrNo = document.getElementById("Sr.No").value;
+        var fname = document.getElementById("FName").value;
+        var lname = document.getElementById("LName").value;
+        var email = document.getElementById("Email").value;
+        var mobile = document.getElementById("Mobile").value;
+        var newRow = document.createElement("tr");
+        
+        newRow.innerHTML =
+          "<td>" +
+          SrNo +
+          "</td>" +
+          "<td>" +
+          fname +
+          "</td>" +
+          "<td>" +
+          lname +
+          "</td>" +
+          "<td>" +
+          email +
+          "</td>" +
+          "<td>" +
+          mobile +
+          "</td>" +
+          '<td><button onclick="deleteRow(this)" class="btn btn-danger btn-sm bi bi-trash"></button></td>';
+        document.getElementById("tbody").appendChild(newRow);
+
+        document.getElementById("Sr.No").value=''
+        document.getElementById("FName").value = "";
+        document.getElementById("LName").value = "";
+        document.getElementById("Email").value = "";
+        document.getElementById("Mobile").value = "";
+        }
+
+      function deleteRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
+    </script>
+  </body>
+</html>
